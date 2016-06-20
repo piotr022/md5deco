@@ -29,7 +29,7 @@ These notices must be retained in any copies of any part of this
 documentation and/or software.
  
 */
-
+ 
 /* interface header */
 #include "md5.h"
  
@@ -38,7 +38,7 @@ documentation and/or software.
  
  
 // Constants for MD5Transform routine.
-#define S11 7md5.h md5.cc licence
+#define S11 7
 #define S12 12
 #define S13 17
 #define S14 22

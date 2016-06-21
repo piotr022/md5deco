@@ -12,9 +12,9 @@ class Hash_de
 	public:
 	Hash_de(string); // inicjacja hasha md5 // Hash_de obj1("md5hashasdnandja");
 	char* dyn_MD5_c(string);
-	char* decode();// obj1.decode("location_of_dictionary")
-	char* decode_silent();
-	int calc_lines();
+	char* decode(char* ="dict.txt");// obj1.decode("location_of_dictionary")
+	char* decode_silent(char* ="dict.txt");
+	int calc_lines(char* ="dict.txt");
 	
 	private:
 	string hash;

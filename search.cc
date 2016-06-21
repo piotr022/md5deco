@@ -30,10 +30,11 @@ char* Hash_de::dyn_MD5_c(string md5_s)
 }
 
 
-char* Hash_de::decode()
+char* Hash_de::decode(char* filena)
 {
+	const char* fn = filena;
 	cout << hash_c_main << endl << endl;
-	dict.open("dict.txt"); //otwieranie pliku
+	dict.open(fn); //otwieranie pliku
 	string hash_s;
 	char *hash_c_temp;
 	int hash_lenght = 32;
@@ -67,10 +68,11 @@ else return "file of dictionary not found";
 }
 
 
-char* Hash_de::decode_silent()
+char* Hash_de::decode_silent(char* filean)
 {
+	const char* fn = filean;
 	cout << hash_c_main << endl << endl;
-	dict.open("dict.txt"); //otwieranie pliku
+	dict.open(fn); //otwieranie pliku
 	string hash_s;
 	char *hash_c_temp;
 	int hash_lenght = 32;
@@ -111,15 +113,21 @@ else return "file of dictionary not found";
 }
 
 
-int Hash_de::calc_lines()
+int Hash_de::calc_lines(char* filen)
 {
+	const char* fn = filen;
 	lines_num=0;
-	dict.open("dict.txt");
-	string useless;
-	while(getline(dict,useless))
-		lines_num++;
-	dict.close();
-	return lines_num;
+	dict.open(fn);
+	if(dict.is_open())
+	{
+		string useless;
+		while(getline(dict,useless))
+			lines_num++;
+		dict.close();
+		return lines_num;
+	}
+	else {cout << "\ncan't find file '" << filen<<"'\n make sure it exist in folder with from you running md5deco \n";
+			return 0;}
 }
 
 

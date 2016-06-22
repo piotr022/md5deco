@@ -2,6 +2,7 @@
 #include <cstring>
 #include <fstream>
 #include <cstdlib>
+#include <math.h>
 
 #include "md5.h"
 #include "search.h"
@@ -149,4 +150,73 @@ void Brute_gen::file_dump()
 		output.close();
 	}
 	
+}
+
+
+
+Num_brute::Num_brute(string h)
+{
+	hash_c_main = str_to_c(h);
+}
+
+
+
+char* Num_brute::str_to_c(string md5_s)
+{
+	string str = md5_s;
+	char *md5_cc = new char[str.length() + 1];
+	strcpy(md5_cc, str.c_str());
+	delete [] md5_cc;
+	const char *md5_cccc=str.c_str();
+	return strdup(md5_cccc);
+}
+
+
+
+string Num_brute::int_to_str(int x)
+{
+     string tmp;
+     
+     if(x < 0)
+     {
+		tmp = "-";
+		x = -x;
+     }
+     if(x > 9)
+		tmp += int_to_str(x / 10);
+     tmp += x % 10 + 48;
+     return tmp;
+}
+
+
+
+char* Num_brute::do_brute(int digts)
+{
+	int counter;
+	int hash_lenght = 32;
+	last = pow(10, digts);//digts*10;
+	char* hash_c_temp;
+	
+	for(int lap=0; lap <= last; lap++)
+	{
+		hash_c_temp = str_to_c(md5(int_to_str(lap)));
+		
+		if(hash_c_main[3] == hash_c_temp[3])
+		{
+			if(hash_c_main[11] == hash_c_temp[11])
+			{
+				counter = 0;
+				
+				for(int i=0; i <= hash_lenght-1; i++)
+					if(hash_c_main[i] == hash_c_temp[i])
+						counter++;
+				if(counter == hash_lenght)
+				{
+					cout << "  [key found!!] -->  ";
+					return str_to_c(int_to_str(lap));;
+				}
+			}
+		}
+	}
+	return "[key not found] :C\n";
 }

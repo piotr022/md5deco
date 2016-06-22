@@ -196,11 +196,16 @@ char* Num_brute::do_brute(int digts)
 	int hash_lenght = 32;
 	last = pow(10, digts);//digts*10;
 	char* hash_c_temp;
+	int digts_now;
+	double one = 1;
 	
 	for(int lap=0; lap <= last; lap++)
 	{
 		hash_c_temp = str_to_c(md5(int_to_str(lap)));
-		
+		//
+		if (fmod(log10(lap),1)==0)
+			cout << "\n ["<<log10(lap)+1<<"] digts numbers bruting :D\n";
+		//
 		if(hash_c_main[3] == hash_c_temp[3])
 		{
 			if(hash_c_main[11] == hash_c_temp[11])
@@ -217,6 +222,7 @@ char* Num_brute::do_brute(int digts)
 				}
 			}
 		}
+
 	}
 	return "[key not found] :C\n";
 }

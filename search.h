@@ -1,3 +1,10 @@
+/*Project created by Piotr Lewandowski
+im using md5.h and md5.cc files with was
+shared on http://www.zedwood.com/article/cpp-md5-function
+
+thepiotr022@gmail.com
+*/
+
 #include <iostream>
 #include <fstream>
 

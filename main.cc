@@ -11,10 +11,11 @@ int main(int argc, char * argv[])
 {
 string input;
 bool silent=true;
-cout << "---------------------------------------------\n";
-cout << "you have to create 'dict.txt' file with cointains dictionary\n";
+cout << "--------------------------------------------- "<< endl;
+cout << "Welcome :D in md5deco program\nwith this program you can decode md5 hashes\n";
+cout << "using dictionary scanning mode, or numerical bruteforce\n";
+cout << "full brute force with characters will be added soon :D\n";
 cout << "Verbose mode is more more slower than normal\n";
-cout << "your 'dict.txt' should be big if you want to crack sth\n";
 cout << "thepiotr022@gmail.com \n";
 cout << "---------------[good luck]!------------------\n";
 if(argc==1)
@@ -27,7 +28,10 @@ if(argc==1)
 	cout << "\tgenerating digts dictionary: \n./md5deco 'output.txt' 'first_array' 'last_array'\n";
 	cout << "\tcrack md5 using custom name dictionary:\n";
 	cout << "./md5deco 'hash_to_crack' 'name_of_your_dict'\n";
-	cout << "\texample:\n./md5deco 098f6bcd4621d373cade4e832627b4f6 darc0de.lst\n\n";
+	cout << "\tbrute force only numerical md5 hashes\n";
+	cout << "./md5deco bruteforce 'md5hash_sum_to_crack' 'number_of_digts'\n";
+	cout << "\texamples:\n./md5deco 098f6bcd4621d373cade4e832627b4f6 darc0de.lst\n";
+	cout << "./md5deco bruteforce 202cb962ac59075b964b07152d234b70 3\n\n";
 	return 0;
 }
 
@@ -39,11 +43,23 @@ char* file_n;
 //}
 if(argc == 4)
 {
+	if (string(argv[1]) == "bruteforce")
+	{
+		string mdh = string(argv[2]);
+		Num_brute numforce1(mdh);
+		int digts = atoi(argv[3]);
+		cout << digts << " digts brute force mode!\n\n";
+		char* eq = numforce1.do_brute(digts);
+		cout << eq << "\t" << md5(string(eq));
+		cout << endl << endl;
+		return 0;
+	}
+	else{
 	Brute_gen brute1(argv[1],atoi(argv[2]),atoi(argv[3]));
 	cout << "GENERATING number dictionary to '"<<argv[1]<<"' from ";
 	cout << atoi(argv[2]) << " to " << atoi(argv[3])<< endl;
 	brute1.file_dump();
-	return 0;
+	return 0;}
 }
 else if(argc == 2)
 {
@@ -56,6 +72,7 @@ if(argc==3)
 	input = string(argv[1]);
 	file_n = argv[2];
 }
+
 /////
 Hash_de crack1(input);
 /////

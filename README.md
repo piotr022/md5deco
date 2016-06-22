@@ -35,16 +35,25 @@ examples:
 
 
 example output: 
+
 ./md5deco bruteforce 5059437b8a54d05c09884405ebaf7fb1 9
 
 --------------------------------------------- 
+
 Welcome :D in md5deco program
+
 with this program you can decode md5 hashes
+
 using dictionary scanning mode, or numerical bruteforce
+
 full brute force with characters will be added soon :D
+
 Verbose mode is more more slower than normal
+
 thepiotr022@gmail.com 
+
 ---------------[good luck]!------------------
+
 9 digts brute force mode!
 
 

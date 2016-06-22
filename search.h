@@ -38,3 +38,18 @@ class Brute_gen
 	fstream output;
 	int first, last;
 };
+
+
+class Num_brute
+{
+	public:
+	Num_brute(string);
+	char* str_to_c(string);
+	char* do_brute(int);
+	string int_to_str(int);
+	
+	private:
+	int last;
+	string hash;
+	char* hash_c_main;
+};

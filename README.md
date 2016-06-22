@@ -13,7 +13,7 @@ carck md5 using dictionary:
 
 ./md5deco 'hash_to_crack' 'name_of_your_dict_file'
 
-crack md5 by numeral brute-force
+crack md5 by numeral brute-force (max 9 digts):
 
 ./md5deco bruteforce 'md5hash_sum_to_crack' 'number_of_digts'
 
